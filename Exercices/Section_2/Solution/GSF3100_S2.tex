@@ -1,0 +1,273 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{xcolor, soul}
+\sethlcolor{green}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\title{GSF-3100 \\
+02 Mathématiques financières des obligations (fraction de période) \\
+Série d'exercices 2 (Solutions)}
+
+\begin{document}
+\maketitle
+
+
+\newpage
+
+\section*{Section 1}
+Vous considérez l’achat d’une obligation versant des coupons annuels le 31 décembre et dont le dernier coupon a été versé il y a 260 jours.  En supposant que vous êtes dans une année non bissextile, calculer la fraction de période k nécessaire pour déterminer l’intérêt couru en utilisant la méthode:
+
+\subsection*{1.  Exact / Exact} 
+\begin{enumerate}[a)]
+\item 0,74133
+\item 0,70113
+\item \hl{0,71233}
+\item 0,72523
+\end{enumerate}
+
+\subsection*{Solution}
+\begin{itemize}
+\item Numérateur: Il s'est écoulé exactement 260 jours depuis la date de versement du dernier coupon.
+
+\item Dénominateur: Puisque le coupon est annuel, on peut reconnaître qu'il y a exactement 365 jours dans une période de coupon (dans l'année).
+
+\item Réponse: 260/365 = 0,71233
+\end{itemize}
+
+\newpage
+
+\subsection*{2.  Exact/365} 
+\begin{enumerate}[a)]
+\item \hl{0,71233}
+\item 0,71933
+\item 0,70133
+\item 0,72003
+\end{enumerate}
+
+\subsection*{Solution}
+\begin{itemize}
+\item Numérateur: 260 jours
+\item Dénominateur: Puisque le coupon est annuel, on considère qu'il y a 365 jours dans l'année ou la période de coupon applicable, indépendamment du vrai nombre de jours.
+\item Réponse: 260/365 = 0,71233
+\item Note: Si la période de coupon n'avait pas été sur une base annuelle, le k selon la convention Exact/365 n'aurait pas été le même que selon la convention Exact/Exact.
+\end{itemize}
+
+\newpage 
+
+\subsection*{3. Exact/360}
+\begin{enumerate}[a)]
+\item 0,71233
+\item \hl{0,72222}
+\item 0,71111
+\item 0,72933
+\end{enumerate}
+
+\subsection*{Solution}
+\begin{itemize}
+\item Numérateur: Il s'est écoulé exactement 260 jours depuis la date de versement du dernier coupon.
+\item Dénominateur: Puisque le coupon est annuel, on considère qu'il y a 360 jours dans l'année ou la période de coupon applicable, indépendamment du vrai nombre de jours.
+\item Réponse: 260/360 = 0,72222
+\item Note: La convention \textbf{360} fait légèrement augmenter le montant des intérêts courus à payer par rapport à la convention "365". Elle est donc relativement désavantageuse pour l'acheteur d'une obligation.
+\end{itemize}
+
+\newpage  
+
+\subsection*{4. 30/360}
+\begin{enumerate}[a)]
+\item 0,72933
+\item 0,72233
+\item 0,70389
+\item \hl{0,71389}
+\end{enumerate}
+
+
+\subsection*{Solution}
+Puisque le dernier coupon a été versé le 31 décembre dernier, il faut d'abord déterminer la date à laquelle nous nous situons aujourd'hui. Pour ce faire, il faut ajouter 260 jours à partir du 1er janvier inclusivement en considérant le nombre de jours exact par mois. Pour une année non bissextile, nous avons:
+\begin{itemize}
+\item Janvier: 31 jours
+\item février: 28 jours 
+\item mars: 31 jours
+\item avril: 30 jours
+\item mai: 31 jours
+\item juin: 30 jours
+\item juillet: 31 jours 
+\item août: 31 jours
+\item septembre: 30 jours.
+\end{itemize}
+
+En additionnant les jours de janvier à août inclusivement (8 mois),  on sait alors que 243 jours se sont écoulés au 1er septembre, soit:
+\begin{itemize}
+\item 31 × 5 mois (janvier, mars, mai, juillet, août) + 30 × 2 mois (avril, juin) + 28 × 1 mois (février) = 243 jours
+\end{itemize}
+
+Pour trouver la date à laquelle nous sommes, il ne manque qu'à effectuer la différence entre le nombre de jours écoulés depuis le versement du dernier coupon (260) moins la période écoulée de janvier à août (243), soit:
+\begin{center}
+260 - 243 = 17 jours
+\end{center}
+
+Nous sommes donc en date du 17 septembre. La convention "30" implique que les 8 mois complets écoulés comptent 30 jours chacun plus le nombre de jours réels pour le dernier mois (17 jours en septembre).
+\begin{itemize}
+\item Numérateur: 30 × 8 mois + 17 = 257 jours
+\item Dénominateur: 360 jours dans l'année indépendamment du nombre réel de jours.
+\item Réponse: 257 / 360 = 0,71389
+\end{itemize}
+
+\newpage
+
+\section*{Section 2}
+Vous considérez l’achat d’une obligation versant des coupons les 30 juin et 31 décembre de chaque année. Calculer la fraction de période $k$ nécessaire pour déterminer l’intérêt couru en supposant que vous êtes le 4 février d’une année non bissextile et en utilisant la méthode:
+
+
+\subsection*{5.  Exact / Exact} 
+\begin{enumerate}[a)]
+\item 0,18889
+\item \hl{0,19337}
+\item 0,19444
+\item 0,19178
+\end{enumerate}
+
+\subsection*{Solution}
+\begin{itemize}
+\item Numérateur: 35 jours depuis le dernier coupon versé
+\item Dénominateur: Ici, il faut calculer le nombre de jours exact entre le 1er janvier et le 30 juin inclusivement. 
+\item Pour une année non bissextile, nous avons: 
+\begin{itemize}
+\item Janvier: 31 jours
+\item février: 28 jours
+\item mars: 31 jours
+\item avril: 30 jours
+\item mai: 31 jours
+\item juin: 30 jours
+\item Total: 31 × 3 mois (janvier, mars, mai) + 30 × 2 mois (avril, juin) + 28 (février) = 181 jours exactement par période de coupon
+\end{itemize}
+\item Réponse: 35 / 181 = 0,19337
+\end{itemize}
+
+\newpage 
+
+\subsection*{6.  Exact/365} 
+\begin{enumerate}[a)]
+\item 0,18889
+\item 0,19337
+\item 0,19444
+\item \hl{0,19178}
+\end{enumerate}
+
+\subsection*{Solution}
+\begin{itemize}
+\item Numérateur: 35 jours
+\item Dénominateur: Avec une période de coupon correspond à 1/2 année et en acceptant qu'il y a 365 jours par année, on a 365 × 0,5 = 182,5 jours par période de coupon.
+\item Réponse: 35 / 182,5 = 0,19178
+\end{itemize}
+
+\newpage
+
+
+\subsection*{7. Exact/360}
+\begin{enumerate}[a)]
+\item 0,18889
+\item 0,19337
+\item \hl{0,19444}
+\item 0,19178
+\end{enumerate}
+\subsection*{Solution}
+\begin{itemize}
+\item Numérateur: 35 jours
+\item Dénominateur: On applique le même principe qu'en (2), mais maintenant avec 360 jours, soit: 360 × 0,5 = 180 jours.
+\item Réponse: 35/180 = 0,19444
+\item Rappel: À numérateur égal, une convention "360" sera toujours un peu plus grande qu'une convention "365".
+\end{itemize}
+
+\newpage
+
+\subsection*{8. 30 / 360}
+\begin{enumerate}[a)]
+\item \hl{0,18889}
+\item 0,19337
+\item 0,19444
+\item 0,19178
+\end{enumerate}
+
+\subsection*{Solution}
+\begin{itemize}
+\item Numérateur: Un mois complet (janvier) s'est écoulé en date d'aujourd'hui. On a donc: 30  × 1 mois + 4 jours = 34 jours.
+\item Dénominateur: 180 jours
+\item Réponse: 34 / 180 jours = 0,18889
+\item Constat: En général, la convention \textbf{30/365} donnerait un coefficient $k$ le moins élevé,  puisqu'il y a 7 mois à 31 jours dans l'année, ce qui escompte davantage le nombre de jours réels dans une période de coupon.
+\end{itemize}
+\newpage 
+
+
+\section*{Section 3}
+Vous considérez l’achat d’une obligation versant des coupons au dernier jour de chaque mois et dont le prochain coupon sera versé dans 7 jours. Calculer la fraction de période $k$ nécessaire pour déterminer l’intérêt couru en supposant que vous êtes en mars et en utilisant la méthode: 
+
+\subsection*{9.  Exact / Exact} 
+\begin{enumerate}[a)]
+\item 0,80000 
+\item 0,7800
+\item \hl{0,77419}
+\item 0,78904 
+\end{enumerate}
+\begin{itemize}
+\item Numérateur: Dans ce problème, on connait seulement la période à écouler avant le versement du prochain coupon.  Puisque le mois de mars a 31 jours, nous nous situons donc en date du 24 (31-7) mars. Le nombre de jours exact écoulé depuis le versement du dernier coupon au 28 février est donc de 24 jours. 
+\item Dénominateur: Le nombre de jours exact pour la période de coupon est de 31 jours, soit le nombre de jours pour le mois de mars.
+\item Réponse: 24/31 = 0,77419 
+\end{itemize}
+
+\newpage
+
+
+\subsection*{10.  Exact/365} 
+\begin{enumerate}[a)]
+\item 0,77419  
+\item 0,78000
+\item 0,80000 
+\item \hl{0,78904}
+\end{enumerate}
+
+\subsection*{Solution}
+\begin{itemize}
+\item Numérateur: 24 jours écoulés du 1er au 24 mars (aujourd'hui) inclusivement
+\item Dénominateur: Puisque la période de coupon est mensuelle, il faut prendre le nombre de jours moyen par mois en comptant 365 jours par année. Cela donne 365/12 = 30,41666 jours par mois
+\item Réponse: 24 / (365/12) = (24 × 12) / 365 = 288 / 360 = 0,78904
+\end{itemize}
+
+\newpage
+
+
+\subsection*{11. Exact/360}
+\begin{enumerate}[a)]
+\item 0,77419  
+\item 0,78000 
+\item \hl{0,80000}
+\item 0,78904
+\end{enumerate}
+
+\subsection*{Solution}
+\begin{itemize}
+\item Numérateur: 24 jours
+\item Dénominateur: C'est le même principe qu'en 2), mais on considère qu'une année compte 360 jours. On obtient 360/12 = 30 jours par mois en moyenne.
+\item Réponse: 24 / 30 = 4/5 = 0,8
+\end{itemize}
+
+\newpage
+
+
+\subsection*{12.  30/360}
+\begin{enumerate}[a)]
+\item 0,77419  
+\item 0,78000 
+\item \hl{0,80000}
+\item 0,78904
+\end{enumerate}
+\subsection*{Solution}
+\begin{itemize}
+\item Numérateur: Puisque la période de coupon est mensuelle, le nombre de jours entre 2 dates de coupon ne pourra jamais faire un mois complet. Il faut donc prendre le nombre de jours exact dans ce contexte, soit 24 jours.
+\item Dénominateur: Moyenne de 30 jours par mois. 
+\item Réponse: 24/30 = 4/5 = 0,8
+\item Constat: Plus la période de coupon est courte et plus le coefficient k sera grand. 
+\end{itemize}
+
+\end{document}

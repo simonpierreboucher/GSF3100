@@ -1,0 +1,328 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{xcolor, soul}
+\sethlcolor{green}
+\usepackage{enumerate}
+\title{GSF-3100 \\
+03 Volatilité dans le marché obligataire \\
+Série d'exercices 4 (Solutions)}
+
+\begin{document}
+\maketitle
+
+\begin{itemize}
+\item Dans ce document vous avez des questions à choix multiples allant de a) à d).  
+\item Il y a seulement un choix possible par question.
+\item Ce questionnaire contient des exercices en lien avec la volatilité dans le marché obligataire.
+\item Contient 9 questions. 
+\end{itemize}
+ 
+
+
+
+
+
+\newpage
+
+\section*{Exercice 1}
+Pour une obligation à valeur nominale M = 100 \$ venant à échéance dans 60 semestres avec un taux de coupon annuel $TC= 3$ \% payable quatre fois par année et un taux de rendement effectif trimestriel exigé de y = 1 \%,  trouver la durée modifiée en année.
+
+
+\begin{enumerate}[a)]
+\item 18,50142 
+\item 18,60142 
+\item  \hl{18,55142}
+\item 18,65142 
+\end{enumerate}
+
+\section*{Solution 1}
+
+\textbf{Paramètres:}
+\begin{itemize}
+\item n = 60 semestres $\times$ 2 trimestres / semestre = 120 trimestres
+\item C=$\frac{0.03 \times 100}{4}=0.75 \$ $
+\item y trimestriel = 1 \%
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Prix de l'obligation:}
+\begin{align*}
+P_0=C \times \left[ \frac{1-\left(\frac{1}{(1+r)^n} \right)}{r} \right]+\frac{M}{(1+r)^n}
+\end{align*}
+
+\begin{align*}
+P_0=0.75 \times \left[ \frac{1-\left(\frac{1}{(1+0.01)^{120}} \right)}{0.01} \right]+\frac{100}{(1+0.01)^{120}}
+\end{align*}
+
+\begin{align*}
+P_0=82.57487 \$
+\end{align*}
+
+\vspace{0.5cm}
+
+\textbf{Durée modifiée en année:}
+
+\begin{align*}
+D_m=\frac{\frac{C}{y^2} \left[ 1-\frac{1}{(1+y)^n} \right] +\frac{n(100-\frac{C}{y}}{(1+y)^{n+1}}}{P}
+\end{align*}
+
+\begin{align*}
+D_m=\frac{\frac{0.75}{0.01^2} \left[ 1-\frac{1}{(1+0.01)^{120}} \right] +\frac{120\left(-\frac{0.75}{0.01}\right)}{(1+0.01)^{120+1}}}{82.57487}
+\end{align*}
+
+\begin{align*}
+D_m = 74.20567 
+\end{align*}
+
+Le résultat que nous venons d'obtenir représente la durée modifiée en trimestres.  Afin d'obtenir la durée modifiée en années,  nous allons diviser la durée modifiée en trimestres par 4. 
+
+\begin{align*}
+D_m^* =\frac{D_m}{4}= \frac{74.20567}{4} = 18.55142
+\end{align*}
+
+\newpage
+
+\section*{Exercice 2}
+Pour une obligation à valeur nominale M = 100 \$ venant à échéance dans 60 semestres avec un taux de coupon annuel $TC= 3$ \% payable quatre fois par année et un taux de rendement effectif trimestriel exigé de y = 1 \%,  trouver la durée de Macaulay en trimestre.
+
+
+\begin{enumerate}[a)]
+\item \hl{74.94773}
+\item 74.99773 
+\item 74.90773 
+\item 74.94073 
+\end{enumerate}
+
+\section*{Solution 2}
+
+\textbf{Durée de Macaulay en trimestre} \\
+
+Il est important ici de comprendre que la durée de macaulay $D$ est une fonction de la durée modifiée $D_m$.  De plus,  comme dans la question nous demandons la durée de macaulay en trimestres,  il est important d'utiliser également la durée modifiée en trismestre dans l'équation suivante.
+
+\begin{align*}
+D=D_m (1+y)
+\end{align*}
+
+\begin{align*}
+D=74.20567 (1+0.01)
+\end{align*}
+
+\begin{align*}
+D = 74,94773 
+\end{align*}
+
+
+\newpage
+
+\section*{Exercice 3}
+Considérer l’obligation suivante: TC effectif semestriel = 2 \%, n = 20 semestres, y effectif semestriel = 1,6 \%, P = 106,80023 \$, M = 100 \$ et $D_m$ en année = 7,490295 années.  Si on applique une diminution du taux de rendement de 150 points de base,  soit $\Delta y = -1,5$ \%,  trouver la vraie variation de prix $P_{y+\Delta y} - P$ en dollar.
+
+
+\begin{enumerate}[a)]
+\item 23.99896 \$ 
+\item \hl{30.80368 \$}
+\item 31.80368 \$
+\item  24.99896 \$
+\end{enumerate}
+
+\section*{Solution 3}
+
+\textbf{$D_m$ en semestre:} 
+\begin{align*}
+D_m=7.490295 \times 2 = 14.98059
+\end{align*}
+\textbf{Variation de prix réelle $P_{y+\Delta y} - P$ pour $\Delta y = -0.015$}
+\begin{itemize}
+\item Prix suite à la variation 
+
+\begin{align*}
+P_{y+\Delta y}=C \times \left[ \frac{1-\left(\frac{1}{(1+(y+\Delta y))^n} \right)}{y+\Delta y} \right]+\frac{M}{(1+(y+\Delta y))^n}
+\end{align*}
+\begin{align*}
+P_{y+\Delta y}=2 \times \left[ \frac{1-\left(\frac{1}{(1+(0.016-0.015))^{20}} \right)}{0.016-0.015} \right]+\frac{100}{(1+(0.016-0.015))^{20}}
+\end{align*}
+\begin{align*}
+P_{y+\Delta y}=137.60391 \$
+\end{align*}
+
+\item Variation de prix réelle 
+\begin{align*}
+P_{y+\Delta y}-P=137.60391- 106.80023 
+\end{align*}
+\begin{align*}
+P_{y+\Delta y}-P=30.80368\$
+\end{align*}
+\end{itemize}
+
+\newpage
+
+
+\section*{Exercice 4}
+Considérer l’obligation suivante: TC effectif semestriel = 2 \%, n = 20 semestres, y effectif semestriel = 1,6 \%, P = 106,80023 \$, M = 100 \$ et $D_m$ en année = 7,490295 années.  Si on applique une diminution du taux de rendement de 150 points de base,  soit $\Delta y = -1,5$ \%,  trouver ;a variation approximative du prix $\Delta P$ en dollar.
+
+
+\begin{enumerate}[a)]
+\item \hl{23.99896 \$}
+\item 30.80368 \$
+\item 31.80368 \$
+\item  24.99896 \$
+\end{enumerate}
+
+\section*{Solution 4}
+Variation de prix approximative en \$, $\Delta P$, pour $\Delta y = -0.015$
+
+\begin{align*}
+\Delta P \approx (-D_m \times \Delta y) \times P
+\end{align*}
+
+\begin{align*}
+\Delta P \approx (-14.98059 \times -0.015) \times 106.80023
+\end{align*}
+
+\begin{align*}
+\Delta P \approx 23.99896\$
+\end{align*}
+
+\newpage
+
+\section*{Exercice 5}
+Pour une obligation à valeur nominale $M = 100$ \$ venant à échéance dans $n = 60$ semestres avec un taux de coupon annuel $TC = 0$ \% payable quatre fois par année et un taux de rendement effectif trimestriel exigé de $y = 1$ \%,  trouver la durée de Macaulay en année.
+
+
+\begin{enumerate}[a)]
+\item 29.70297 
+\item \hl{30.0000}
+\item 30.5000
+\item 30.70297 
+\end{enumerate}
+
+\section*{Solution 5}
+Dans ce problème, la formule de durée n'est pas nécessaire puisqu'une obligation zéro-coupon a toujours une durée de Macaulay égale à son échéance. On voit ici que l'échéance de notre obligation est de 60 semestres, ce qui nous donne une durée de macaulay égale à 60.  On peut convertir la durée de macaulay en années.
+\begin{align*}
+D^*=\frac{D}{2}=\frac{60}{2}=30
+\end{align*}
+
+
+\newpage
+
+
+\section*{Exercice 6}
+Pour une obligation à valeur nominale $M = 100$ \$ venant à échéance dans $n = 60$ semestres avec un taux de coupon annuel $TC = 0$ \% payable quatre fois par année et un taux de rendement effectif trimestriel exigé de $y = 1$ \%,  trouver la durée modifiée en année.
+
+\begin{enumerate}[a)]
+\item 30.5000
+\item 30.0000
+\item \hl{29.70297}
+\item 30.70297 
+\end{enumerate}
+
+\section*{Solution 6}
+
+\textbf{Durée modifée}
+\begin{align*}
+D=D_m(1+y)
+\end{align*}
+\begin{align*}
+D_m=\frac{D}{1+y}
+\end{align*}
+\begin{align*}
+D_m=\frac{60}{1+0.01}
+\end{align*}
+\begin{align*}
+D_m=29.70297
+\end{align*}
+
+\newpage
+
+\section*{Exercice 7}
+Considérer l’obligation suivante: TC effectif périodique = 0 \%, $n = 60$, y effectif périodique = 0,5 \%, $P = 7413,72196$ \$, $M= 10000$ \$, $D_m = 59.70149$ et $C = 3623.67268$.  Si on augmente le taux de rendement de 200 points de base ($\Delta y = 2$  \%),  trouver la variation de prix en pourcentage en utilisant la durée et la convexité (approximation quadratique). 
+
+\begin{enumerate}[a)]
+\item -119.403 \%
+\item \hl{-46.930 \%}
+\item -26.930 \%
+\item -69.343 \%
+\end{enumerate}
+
+\section*{Solution 7}
+\textbf{Approximation quadratique}
+\begin{align*}
+\frac{\Delta P}{P} \approx \left[ (-D_m \times \Delta y)+(0.5 \times C \times (\Delta Y)^2) \right]
+\end{align*}
+\begin{align*}
+\frac{\Delta P}{P} \approx \left[ (-59.70149 \times 0.02)+(0.5 \times 3623.67268 \times (0.02)^2) \right]
+\end{align*}
+\begin{align*}
+\frac{\Delta P}{P} \approx -0.46930 \approx -46.930\%
+\end{align*}
+\begin{align*}
+\Delta P \approx -3479.2697 \$
+\end{align*}
+
+\newpage
+
+\section*{Exercice 8}
+Considérer l’obligation suivante: TC effectif périodique = 0 \%, $n = 60$, y effectif périodique = 0,5 \%, $P = 7413,72196$ \$, $M= 10000$ \$, $D_m = 59.70149$ et $C = 3623.67268$.  Si on augmente le taux de rendement de 200 points de base ($\Delta y = 2$  \%),  trouver la variation de prix en pourcentage en utilisant la durée seulement (approximation linéaire).
+
+\begin{enumerate}[a)]
+\item \hl{-119.403 \%}
+\item -46.930 \%
+\item -26.930 \%
+\item -69.343 \%
+\end{enumerate}
+
+\section*{Solution 8}
+\textbf{Approximation linéaire}
+\begin{align*}
+\frac{\Delta P}{P} \approx \left( -D_m \times \Delta y \right)
+\end{align*}
+
+\begin{align*}
+\frac{\Delta P}{P} \approx (-59.70149 \times 0.02)
+\end{align*}
+
+\begin{align*}
+\frac{\Delta P}{P} \approx -1.19403 \approx -119.403 \%
+\end{align*}
+
+\begin{align*}
+\Delta P \approx -8852.21642 \$
+\end{align*}
+
+\newpage
+
+\section*{Exercice 9}
+Considérer l’obligation suivante: TC effectif périodique = 0 \%, $n = 60$, y effectif périodique = 0,5 \%, $P = 7413,72196$ \$, $M= 10000$ \$, $D_m = 59.70149$ et $C = 3623.67268$.  Si on augmente le taux de rendement de 200 points de base ($\Delta y = 2$  \%),  trouver la variation de prix en pourcentage en utilisant le vrai prix après le changement de taux $P_{y+\Delta y}$.
+
+\begin{enumerate}[a)]
+\item -119.403 \%
+\item -46.930 \%
+\item -26.930 \%
+\item \hl{-69.343 \%}
+\end{enumerate}
+
+\section*{Solution 9}
+\textbf{Variation de prix réelle}
+\begin{align*}
+P_{y+\Delta y}=\frac{M}{(1+(y+\Delta y))^n}
+\end{align*}
+
+\begin{align*}
+P_{y+\Delta y}=\frac{10000}{(1+(0.05+0.02))^{60}}
+\end{align*}
+
+\begin{align*}
+P_{y+\Delta y}=2272.83588\$
+\end{align*}
+
+\begin{align*}
+\frac{P_{y+\Delta y}-P}{P}=\frac{2272.83588- 7413.72196}{ 7413.72196}
+\end{align*}
+\begin{align*}
+\frac{P_{y+\Delta y}-P}{P}=-0.69343=-69.343\%
+\end{align*}
+\end{document}
