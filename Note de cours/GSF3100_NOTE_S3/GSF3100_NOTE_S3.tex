@@ -1,0 +1,511 @@
+\documentclass[letterpaper, 12pt]{article}
+
+% --- Package imports ---
+
+% Extended set of colors
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage{
+  amsmath, amsthm, amssymb, mathtools, dsfont, units,          % Math typesetting
+  graphicx, wrapfig, subfig, float,                            % Figures and graphics formatting
+  listings, color, inconsolata, pythonhighlight,               % Code formatting
+  fancyhdr, sectsty, hyperref, enumerate, enumitem, framed }   % Headers/footers, section fonts, links, lists
+
+% lipsum is just for generating placeholder text and can be removed
+\usepackage{hyperref, lipsum} 
+
+% --- Fonts ---
+
+\usepackage{newpxtext, newpxmath, inconsolata}
+
+% --- Page layout settings ---
+
+% Set page margins
+\usepackage[left=1.35in, right=1.35in, top=1.0in, bottom=.9in, headsep=.2in, footskip=0.35in]{geometry}
+
+% Anchor footnotes to the bottom of the page
+\usepackage[bottom]{footmisc}
+
+% Set line spacing
+\renewcommand{\baselinestretch}{1.2}
+
+% Set spacing between paragraphs
+\setlength{\parskip}{1.3mm}
+
+% Allow multi-line equations to break onto the next page
+\allowdisplaybreaks
+
+% --- Page formatting settings ---
+
+% Set image captions to be italicized
+\usepackage[font={it,footnotesize}]{caption}
+
+% Set link colors for labeled items (blue), citations (red), URLs (orange)
+\hypersetup{colorlinks=true, linkcolor=RoyalBlue, citecolor=RedOrange, urlcolor=ForestGreen}
+
+% Set font size for section titles (\large) and subtitles (\normalsize) 
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{{\fontsize{19}{19}\selectfont\textreferencemark}\;\; }{0em}{}
+\titleformat{\subsection}{\normalsize\bfseries\selectfont}{\thesubsection\;\;\;}{0em}{}
+
+% Enumerated/bulleted lists: make numbers/bullets flush left
+%\setlist[enumerate]{wide=2pt, leftmargin=16pt, labelwidth=0pt}
+\setlist[itemize]{wide=0pt, leftmargin=16pt, labelwidth=10pt, align=left}
+
+% --- Table of contents settings ---
+
+\usepackage[subfigure]{tocloft}
+
+% Reduce spacing between sections in table of contents
+\setlength{\cftbeforesecskip}{.9ex}
+
+% Remove indentation for sections
+\cftsetindents{section}{0em}{0em}
+
+% Set font size (\large) for table of contents title
+\renewcommand{\cfttoctitlefont}{\large\bfseries}
+
+% Remove numbers/bullets from section titles in table of contents
+\makeatletter
+\renewcommand{\cftsecpresnum}{\begin{lrbox}{\@tempboxa}}
+\renewcommand{\cftsecaftersnum}{\end{lrbox}}
+\makeatother
+
+% --- Set path for images ---
+
+\graphicspath{{Images/}{../Images/}}
+
+% --- Math/Statistics commands ---
+
+% Add a reference number to a single line of a multi-line equation
+% Usage: "\numberthis\label{labelNameHere}" in an align or gather environment
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+% Shortcut for bold text in math mode, e.g. $\b{X}$
+\let\b\mathbf
+
+% Shortcut for bold Greek letters, e.g. $\bg{\beta}$
+\let\bg\boldsymbol
+
+% Shortcut for calligraphic script, e.g. %\mc{M}$
+\let\mc\mathcal
+
+% \mathscr{(letter here)} is sometimes used to denote vector spaces
+\usepackage[mathscr]{euscript}
+
+% Convergence: right arrow with optional text on top
+% E.g. $\converge[p]$ for converges in probability
+\newcommand{\converge}[1][]{\xrightarrow{#1}}
+
+% Weak convergence: harpoon symbol with optional text on top
+% E.g. $\wconverge[n\to\infty]$
+\newcommand{\wconverge}[1][]{\stackrel{#1}{\rightharpoonup}}
+
+% Equality: equals sign with optional text on top
+% E.g. $X \equals[d] Y$ for equality in distribution
+\newcommand{\equals}[1][]{\stackrel{\smash{#1}}{=}}
+
+% Normal distribution: arguments are the mean and variance
+% E.g. $\normal{\mu}{\sigma}$
+\newcommand{\normal}[2]{\mathcal{N}\left(#1,#2\right)}
+
+% Uniform distribution: arguments are the left and right endpoints
+% E.g. $\unif{0}{1}$
+\newcommand{\unif}[2]{\text{Uniform}(#1,#2)}
+
+% Independent and identically distributed random variables
+% E.g. $ X_1,...,X_n \iid \normal{0}{1}$
+\newcommand{\iid}{\stackrel{\smash{\text{iid}}}{\sim}}
+
+% Sequences (this shortcut is mostly to reduce finger strain for small hands)
+% E.g. to write $\{A_n\}_{n\geq 1}$, do $\bk{A_n}{n\geq 1}$
+\newcommand{\bk}[2]{\{#1\}_{#2}}
+
+% Math mode symbols for common sets and spaces. Example usage: $\R$
+\newcommand{\R}{\mathbb{R}}	% Real numbers
+\newcommand{\C}{\mathbb{C}}	% Complex numbers
+\newcommand{\Q}{\mathbb{Q}}	% Rational numbers
+\newcommand{\Z}{\mathbb{Z}}	% Integers
+\newcommand{\N}{\mathbb{N}}	% Natural numbers
+\newcommand{\F}{\mathcal{F}}	% Calligraphic F for a sigma algebra
+\newcommand{\El}{\mathcal{L}}	% Calligraphic L, e.g. for L^p spaces
+
+% Math mode symbols for probability
+\newcommand{\pr}{\mathbb{P}}	% Probability measure
+\newcommand{\E}{\mathbb{E}}	% Expectation, e.g. $\E(X)$
+\newcommand{\var}{\text{Var}}	% Variance, e.g. $\var(X)$
+\newcommand{\cov}{\text{Cov}}	% Covariance, e.g. $\cov(X,Y)$
+\newcommand{\corr}{\text{Corr}}	% Correlation, e.g. $\corr(X,Y)$
+\newcommand{\B}{\mathcal{B}}	% Borel sigma-algebra
+
+% Other miscellaneous symbols
+\newcommand{\tth}{\text{th}}	% Non-italicized 'th', e.g. $n^\tth$
+\newcommand{\Oh}{\mathcal{O}}	% Big-O notation, e.g. $\O(n)$
+\newcommand{\1}{\mathds{1}}	% Indicator function, e.g. $\1_A$
+
+% Additional commands for math mode
+\DeclareMathOperator*{\argmax}{argmax}		% Argmax, e.g. $\argmax_{x\in[0,1]} f(x)$
+\DeclareMathOperator*{\argmin}{argmin}		% Argmin, e.g. $\argmin_{x\in[0,1]} f(x)$
+\DeclareMathOperator*{\spann}{Span}		% Span, e.g. $\spann\{X_1,...,X_n\}$
+\DeclareMathOperator*{\bias}{Bias}		% Bias, e.g. $\bias(\hat\theta)$
+\DeclareMathOperator*{\ran}{ran}			% Range of an operator, e.g. $\ran(T) 
+\DeclareMathOperator*{\dv}{d\!}			% Non-italicized 'with respect to', e.g. $\int f(x) \dv x$
+\DeclareMathOperator*{\diag}{diag}		% Diagonal of a matrix, e.g. $\diag(M)$
+\DeclareMathOperator*{\trace}{trace}		% Trace of a matrix, e.g. $\trace(M)$
+\DeclareMathOperator*{\supp}{supp}		% Support of a function, e.g., $\supp(f)$
+
+% Numbered theorem, lemma, etc. settings - e.g., a definition, lemma, and theorem appearing in that 
+% order in Lecture 2 will be numbered Definition 2.1, Lemma 2.2, Theorem 2.3. 
+% Example usage: \begin{theorem}[Name of theorem] Theorem statement \end{theorem}
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+
+% Un-numbered theorem, lemma, etc. settings
+% Example usage: \begin{lemma*}[Name of lemma] Lemma statement \end{lemma*}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem*{definition*}{Definition}
+\newtheorem*{example*}{Example}
+\newtheorem*{remark*}{Remark}
+\newtheorem*{claim}{Claim}
+
+% --- Left/right header text (to appear on every page) ---
+
+% Do not include a line under header or above footer
+\pagestyle{fancy}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\headrulewidth}{0pt}
+
+% Right header text: Lecture number and title
+\renewcommand{\sectionmark}[1]{\markright{#1} }
+\fancyhead[R]{\small\textit{\nouppercase{\rightmark}}}
+
+% Left header text: Short course title, hyperlinked to table of contents
+\fancyhead[L]{\hyperref[sec:contents]{\small Volatilité dans le marché obligataire}}
+
+% --- Document starts here ---
+
+\begin{document}
+
+% --- Main title and subtitle ---
+
+\title{03-Volatilité dans le marché obligataire \\[1em]
+\normalsize GSF-3100 \\ Marchés des Capitaux}
+
+% --- Author and date of last update ---
+
+\author{\normalsize Simon-Pierre Boucher}
+\date{\normalsize\vspace{-1ex} Last updated: \today}
+
+% --- Add title and table of contents ---
+
+\maketitle
+\tableofcontents\label{sec:contents}
+
+% --- Main content: import lectures as subfiles ---
+
+\newpage
+
+\section{Propriétés reliées à la volatilité}
+\begin{itemize}
+\item Les changements de prix en pourcentage d'une obligation dépendent grandement du type d'obligation. 
+\item Petit changement dans le rendement requis sur une obligation 
+\begin{itemize}
+\item Changement en pourcentage du prix d'une obligation est similaire pour une hausse et une baisse de taux.
+\end{itemize}
+\item Grand changement dans le rendement requis sur une obligation 
+\begin{itemize}
+\item Changement en pourcentage du prix d'une obligation est différente pour une hausse et une baisse de taux.
+\end{itemize}
+\item Pour un grand changement dans le rendement requis 
+\begin{itemize}
+\item $\downarrow$ taux $=$ $\uparrow$ prix $=$ plus grande
+\item $\uparrow$ taux $=$ $\downarrow$ prix $=$ plus faible
+\end{itemize}
+\end{itemize}
+
+\section{Caractéristiques affectant la volatilité}
+Afin de pouvoir poser les caractéristiques affectant la volatilité sur le marché des obligations, nous allons supposer que tous les autres facteurs à l'exception de la caractéristique en question, seront constants. 
+\begin{enumerate}
+\item Taux de coupon ($TC$)
+\begin{center}
+$TC \downarrow$ \hspace{1cm} $\Longleftrightarrow$  \hspace{1cm} Volatilité $\uparrow$
+\end{center}
+\begin{center}
+$TC \uparrow$ \hspace{1cm} $\Longleftrightarrow$  \hspace{1cm} Volatilité $\downarrow$
+\end{center}
+\item Échéance ($n$)
+\begin{center}
+$n \uparrow$ \hspace{1cm} $\Longleftrightarrow$  \hspace{1cm} Volatilité $\uparrow$
+\end{center}
+\begin{center}
+$n \downarrow$ \hspace{1cm} $\Longleftrightarrow$  \hspace{1cm} Volatilité $\downarrow$
+\end{center}
+\item Taux de rendement ($r$)
+\begin{center}
+$r \uparrow$ \hspace{1cm} $\Longleftrightarrow$  \hspace{1cm} Volatilité $\downarrow$
+\end{center}
+\begin{center}
+$r \downarrow$ \hspace{1cm} $\Longleftrightarrow$  \hspace{1cm} Volatilité $\uparrow$
+\end{center}
+\end{enumerate}
+\subsection{Anticipation sur les taux d'intérêts}
+Si un investisseur anticipe une baisse des taux d'intérêts,  il est préférable qu'il ajuste son portefeuille d'obligations pour avoir les caractéristiques suivantes.
+\begin{itemize}
+\item Faible taux de coupon
+\item Longue échéance 
+\item Faible taux de rendement 
+\end{itemize}
+Si un investisseur anticipe une hausse des taux d'intérêts, il est préférable qu'il ajuste son portefeuille d'obligations pour avoir les caractéristiques suivantes.
+\begin{itemize}
+\item Taux de coupon élevé
+\item Courte échéance 
+\item Taux de rendement élevé
+\end{itemize}
+\section{Mesures de la volatilité}
+Sur le marché des actions, la volatilité est souvent mesurée en calculant l'écart-type des rendements d'une action quelconque. Cependant pour une obligation cette mesure de volatilité n'est pas appropriée.  Voici les trois mesures utilisées couramment afin de quantifier la volatilité sur le marché obligataire.
+\begin{enumerate}
+\item Prix ou valeur d’un point de base
+\item Valeur en rendement d’une variation de prix
+\item Durée (duration)
+\end{enumerate}
+\subsection{Prix d’un point de base}
+Cette mesure nous dit quel est le changement en dollar du prix d'une obligation suite à un changement d'un point de base du taux de rendement requis.
+\begin{itemize}
+\item Un point de base est équivalent à $0.01\%$
+\item Si la variation en dollar est grande suite à une variation d'un point de base du rendement, on peut dire que cette obligation est plus volatile.
+\end{itemize}
+\subsection{Valeur en rendement d’une variation de prix}
+Cette mesure nous dit quel est le changement dans le rendement d'une obligation suite à une variation de prix donnée.  
+\begin{itemize}
+\item La variation de prix reflète le changement minimal dans la cote du marché: 
+\begin{itemize}
+\item Marché obligataire gouvernemental américain: $\frac{1}{32}$
+\item Marchés corporatif et municipal: $\frac{1}{8}$
+\end{itemize}
+\item Si la variation du rendement est grande suite à une variation de prix donnée, on peut dire que cette obligation est moins volatile.
+\end{itemize}
+\subsection{Durée}
+La durée ($D$) est une mesure de volatilité qu'il est possible de trouver en prenant la dérivé première de  la fonction de prix de l'obligation par rapport au rendement. 
+\begin{align*}
+D=\frac{\partial P}{\partial y}
+\end{align*}
+Nous allons définir notre fonction de prix comme suit:
+\begin{align*}
+P=\frac{C}{1+y}+\frac{C}{(1+y)^2}+...+\frac{C}{(1+y)^n}+\frac{M}{(1+y)^n}
+\end{align*}
+Afin de faciliter la dérivé première, nous allons modifier notre fonction de prix afin davoir les exposants au numérateur.
+\begin{align*}
+P=C \times (1+y)^{-1}+C \times (1+y)^{-2}+...+C \times (1+y)^{-n}+M \times (1+y)^{-n}
+\end{align*}
+On effectue maintenant la dérivé première.
+\begin{align*}
+\frac{\partial P}{\partial y}=-C \times (1+y)^{-2}-2C \times (1+y)^{-3}-...-nC \times (1+y)^{-(n+1)}-nM \times (1+y)^{-(n+1)}
+\end{align*}
+\begin{align*}
+\frac{\partial P}{\partial y}=\frac{-C}{(1+y)^2}+\frac{-2C}{(1+y)^3}+...+\frac{-nC}{(1+y)^{(n+1)}}+\frac{-nM}{(1+y)^{(n+1)}}
+\end{align*}
+\begin{align*}
+\frac{\partial P}{\partial y}= \frac{-1}{1+y} \times \left[ \frac{C}{(1+y)^1}+\frac{2C}{(1+y)^2}+...+\frac{nC}{(1+y)^{n}}+\frac{nM}{(1+y)^{n}} \right]
+\end{align*}
+En divisant par $P$, on obtient la variation du prix en \% due à une petite variation du rendement.
+\begin{align*}
+\frac{\partial P}{\partial y} \times \frac{1}{P}=\frac{\partial P/P}{\partial y} 
+\end{align*}
+\begin{align*}
+\frac{\partial P/P}{\partial y} = \frac{-1}{1+y} \times \frac{\frac{C}{(1+y)^1}+\frac{2C}{(1+y)^2}+...+\frac{nC}{(1+y)^{n}}+\frac{nM}{(1+y)^{n}}}{P}
+\end{align*}
+\section{Mesures de durée}
+Deux mesures de durée ont été développées à partir de cette dérivée: 
+\begin{enumerate}
+\item Durée de Macaulay
+\item Durée modifiée
+\end{enumerate}
+\subsection{Durée de macaulay}
+La durée de macaulay ($D$) peut être calculée à l'aide de l'équation suivante.
+\begin{align*}
+D=\frac{\frac{C}{(1+y)^1}+\frac{2C}{(1+y)^2}+...+\frac{nC}{(1+y)^{n}}+\frac{nM}{(1+y)^{n}}}{P}
+\end{align*}
+\begin{align*}
+D=\sum_{t=1}^nw_t t
+\end{align*}
+où $w_t=\frac{FM_t (1+y)^{-t}}{P}$\\
+
+
+La durée de macaulay ($D$) représente la moyenne pondérée des échéances $t$ des flux monétaires $FM_t$, où chaque pondération correspond à la contribution au prix de l’obligation $P$ du flux monétaire.
+\subsection{Durée modifiée}
+La durée modifiée est simplement une transformation de la durée de macaulay. On peut donc exprimer la durée modifiée comme étant une fonction de la durée de macaulay.
+\begin{align*}
+D_m=\frac{D}{1+y}=-\frac{\partial P/P}{\partial y}
+\end{align*}
+\begin{itemize}
+\item La durée modifiée est reliée à une variation du prix en pourcentage due à une petite variation du taux de rendement.  
+\item Le signe négatif rappelle qu’il existe une relation inverse entre le prix et le taux de rendement.  
+\item La durée modifiée est une meilleure mesure de la volatilité que la durée de Macaulay. 
+\end{itemize}
+On peut également exprimer la durée modifiée en deux parties:
+\begin{itemize}
+\item terme de coupon 
+\item terme de valeur nominale
+\end{itemize}
+\begin{align*}
+D_m=\frac{\frac{C}{y^2} \left[ 1-\frac{1}{(1+y)^n} \right]+\frac{n(M-C/y)}{(1+y)^{n+1}}}{P}
+\end{align*}
+\section{Propriétés de la durée}
+De façon générale,  la durée de macaulay est toujours plus petite ou égale au temps avant l'échéance de notre obligation. 
+\begin{align*}
+D \le n
+\end{align*}
+Pour ce qui est de la durée modifiée, elle est toujours strictement inférieure au temps avant l'échéance de notre obligation. 
+\begin{align*}
+D < n 
+\end{align*}
+Par contre, si le taux de coupon est de 0 $(TC=0)$,  c'est à dire que nous avons une obligation zéro-coupon, alors la durée de macaulay  est égale au temps avant l'échéance de notre obligation et la durée modifiée est strictement inférieure au temps avant l'échéance de notre obligation.
+\begin{align*}
+D=n 
+\end{align*}
+En gardant les paramètres de notre obligation constants,  on peut poser les propriétés suivantes.
+\begin{itemize}
+\item Une hausse du taux de coupon et par le fait même du coupon lui même, entrainera une baisse de la durée de macaulay et de la durée modifiée.
+\begin{align*}
+\uparrow TC \hspace{1cm} \Longleftrightarrow \hspace{1cm} \downarrow D 
+\end{align*}
+\begin{align*}
+\uparrow TC \hspace{1cm} \Longleftrightarrow \hspace{1cm} \downarrow D_m 
+\end{align*}
+\item Une augmentation du temps avant l'échéance, entrainera normalement une augmentation de la durée de macaulay et de la durée modifiée.
+\begin{align*}
+\uparrow n \hspace{1cm} \Longleftrightarrow \hspace{1cm} \uparrow D 
+\end{align*}
+\begin{align*}
+\uparrow n \hspace{1cm} \Longleftrightarrow \hspace{1cm} \uparrow D_m 
+\end{align*}
+\item Une hausse du rendement requis entrainera une baisse de la durée de macaulay et de la durée modifiée.
+\begin{align*}
+\uparrow y \hspace{1cm} \Longleftrightarrow \hspace{1cm} \downarrow D 
+\end{align*}
+\begin{align*}
+\uparrow y \hspace{1cm} \Longleftrightarrow \hspace{1cm} \downarrow D_m 
+\end{align*}
+\end{itemize}
+Si nous avons un portfeuille contenant des obligations, nous pouvons trouver la durée du portefeuille en faisant simplement une moyenne pondérée de la durée de chacune des obligations individuellement. La proportion du portefeuille investie dans une obligation servira de pordération pour le calcul de la moyenne pondérée.
+
+\section{Approximation de la variation de prix}
+Un aspect interessant de la durée modifiée est qu'elle nous permet d'approximer la variation en dollar du prix d'une obligation.  Nous allons représenter une variation de prix en dollar par $\Delta P$ et non $\partial P$. En effet, $\partial$ représente un changement infinitésimal du prix, c'est à dire un changement à la limite de 0. Si nous posons maintenant l'équation de la durée modifiée suivante:
+\begin{align*}
+D_m =-\frac{\partial P / P}{\partial y}
+\end{align*}
+On peut voir que dans la formule de la durée modifiée,  les changements de taux $y$ et de prix $P$ sont de nature infinitésimale.  Afin d'approximer la variation du prix $P$, nous substiuons $\partial P$ par $\Delta P$ et $\partial y$ par $\Delta y$.  Afin de rendre la formule valide,  il faut modifier le signe égal $=$ par le signe d'approximation $\approx$.
+
+\begin{align*}
+D_m \approx -\frac{\Delta P / P}{\Delta y}
+\end{align*}
+On peut ensuite effectuer une manipulation algébrique afin d'approximer la variation du prix de notre obligation avec la durée modifiée.
+\begin{align*}
+\frac{\Delta P}{P} \approx D_m \Delta y
+\end{align*}
+\begin{align*}
+\Delta P \approx D_m P \Delta y
+\end{align*}
+On voit dans cette formule que l'approximation de la variation du prix de notre obligation est une fonction de la durée modifiée, du prix lui même et de la variation du taux de rendement requis. Étant donné qu'il s'agit d'un approximation, il faut être prudent avec la valeur que nous obtiendrons. Plus la variation de $y$, ($\Delta y$) sera petite, plus la valeur obtenue par approximation sera précise. La durée modifiée est une mesure qui a pour unité de mesure le temps, plus précisément elle est exprimée sous la même unité de temps que la période avant l'échéance de notre obligation. Il est également possible d'exprimer la durée modifiée en dollar. Pour y arriver, il nous suffit de multiplier la durée modifiée par le prix de notre obligation. 
+\begin{align*}
+D_m^{\$}=D_m P
+\end{align*}
+\section{Introduction à la convexité}
+Comme nous l'avons mentionné dans la section précédante, la durée offre une mesure acceptable pour la volatilité du prix d'une obligation. On sait déja que cette mesure est imparfaite pour de grande variation du taux de rendement. Un solution lorsque nous avons une forte variation du taux de rendement est d'utiliser une mesure de convexité. En effet, la durée ne tient pas en compte la convexité existant dans la relation prix et taux de rendement. Pour la durée, nous avons utilisé la dérivé première de notre fonction de prix par rapport au taux de rendement. Dans le cas de la convexité, il nous suffit de dérivé à nouveau par rapport au taux de rendement. Plus précisément, on prend la dérivé seconde de notre fonction de prix par rapport au taux de rendement.
+\begin{align*}
+Conv=\frac{\partial^2P /P}{\partial y^2}
+\end{align*}
+\section{Mesure de convexité}
+Nous allons maintenant voir la formule de la convexité. La première que nous allons voir est celle faisant la somme des flux monétaires actualisés. 
+\begin{align*}
+Conv=\frac{\sum_{t=1}^n \frac{t(t+1)C}{(1+y)^{t+2}}+\frac{n(n+1)M}{(1+y)^{n+2}}}{P}
+\end{align*}
+La deuxième formule remplace la série de coupons actualisées par une annuité dans le but de simplifié la première.
+\begin{align*}
+Conv=\frac{\frac{2C}{y^3} \left[1-\frac{1}{(1+y)^n} \right] -\frac{2Cn}{y^2(1+y)^{n+1}}+\frac{n(n+1)(M-C/y)}{(1+y)^{n+2}}}{P}
+\end{align*}
+Comme pour la durée,  la convexité est exprimée en nombre de période de coupon.  À la différence de la durée,  l'unité de mesure de la convexité est élevée au carré.  On parlera donc de (période de coupon$^2$).  Il existera également une mesure de convexité en dollar qui se trouve en multipliant la mesure convexité par le prix de l'obligation.
+\begin{align*}
+Conv^{\$}=Conv \times P
+\end{align*}
+\section{Propriétés de la convexité}
+\begin{enumerate}
+\item Taux de rendement ($r$)
+\begin{center}
+$r \downarrow$ \hspace{1cm} $\Longleftrightarrow$  \hspace{1cm} Convexité $\uparrow$
+\end{center}
+\begin{center}
+$r \uparrow$ \hspace{1cm} $\Longleftrightarrow$  \hspace{1cm} Convexité $\downarrow$
+\end{center}
+\item Taux de coupon ($TC$)
+\begin{center}
+$TC \uparrow$ \hspace{1cm} $\Longleftrightarrow$  \hspace{1cm} Convexité $\downarrow$
+\end{center}
+\begin{center}
+$TC \downarrow$ \hspace{1cm} $\Longleftrightarrow$  \hspace{1cm} Convexité $\uparrow$
+\end{center}
+En posant l'hypothèse que le taux de rendement et le temps restant avant l'échéance reste constant.
+\end{enumerate}
+Si on pose l'hypothèse que le taux de rendement et la durée modifiée sont constants dans le temps,  il nous est possible de dire qu'un taux de coupon plus faible entraîne une convexité plus petite.  La convexité possède une grande valeur sur le marché. En effet,  un investisseur sera prêt à payer un prix plus élevé pour une obligation ayant une forte convexité.  L'investisseur est donc prêt à accepter un rendement plus faible dans le cas d'une obligation ayant une forte convexité.
+
+\section{Approximation (quadratique)}
+En utilisant la durée et la convexité,  il nous sera possible d'approximer la variation du prix d'une obligation grâce à l'expansion de taylor.  Voici la formule obtenue après quelques manipulations.
+\begin{align*}
+\frac{\Delta P}{P} \approx -D_m \Delta y +\frac{1}{2} Conv(\Delta y)^2
+\end{align*}
+où 
+\begin{itemize}
+\item $D_m=$ durée modifiée 
+\item $Conv=$ convexité
+\item $y=$ taux de rendement 
+\item $\Delta y=$ variation dans le taux de rendement 
+\item $P=$ prix de notre obligation 
+\item $\Delta P=$ variation dans le prix de notre obligation 
+\end{itemize}
+
+\section{Hypothèses importantes pour durée et convexité}
+\begin{itemize}
+\item Les mesures présentées supposent une structure à terme des taux d’intérêt horizontale et des mouvements de taux parallèles.
+\item Elles sont valides pour des obligations standards. Elles ne s’appliquent pas toujours lorsqu’il y a des clauses optionnelles.
+\item En particulier, l’objectif de la durée est de mesurer la sensibilité du prix par rapport au taux d’intérêt. La durée correspond à une moyenne pondérée des échéances presqu’exclusivement pour des obligations standards.
+\end{itemize}
+\section{Durée et convexité effectives}
+Il est possible d’approximer la durée modifiée et la convexité pour obtenir des mesures valides pour n’importe quel type d’obligations et n’importe quelle forme de la structure à terme des taux. Les mesures obtenues sont appelées la durée et la convexité effectives:
+\begin{align*}
+D_m \approx \frac{P_{-}-P_{+}}{2(P_0)(\Delta y)}
+\end{align*}
+\begin{align*}
+Conv\approx \frac{P_{+}+P_{-}-2P_0}{(P_0)(\Delta y)^2}
+\end{align*}
+
+
+
+
+\begin{thebibliography}{1}
+
+\bibitem{williams}
+   Fabozzi, Frank J.
+   \textit{Bond markets, analysis and strategies (9e édition)}.
+ 
+
+% Uncomment the following lines to include a webpage
+% \bibitem{webpage1}
+%   LastName, FirstName. ``Webpage Title''.
+%   WebsiteName, OrganizationName.
+%   Online; accessed Month Date, Year.\\
+%   \texttt{www.URLhere.com}
+
+\end{thebibliography}
+
+% --- Document ends here ---
+
+\end{document}

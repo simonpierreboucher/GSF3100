@@ -1,0 +1,143 @@
+\contentsline {section}{\numberline {1}Équivalence de taux}{7}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Taux effectif $\rightarrow $ Taux effectif}{7}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Taux effectif $\rightarrow $ Taux nominal}{8}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Taux nominal $\rightarrow $ Taux effectif}{8}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Capitalisation et Actualisation}{9}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Valeur Future (Capitalisation)}{9}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Valeur Présente (Actualisation)}{9}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Annuité}{10}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Valeur future d'une annuité régulière}{10}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Valeur présente d'une annuité régulière}{10}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Annuité de début de période}{11}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Déterminer le prix d'une obligation}{13}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Obligation régulière}{13}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Obligation Zéro Coupon}{14}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Obligation perpétuelle}{14}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Intérêt couru et cote}{15}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Prix d'une obligation entre deux dates de coupon}{15}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Cotation}{16}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Convention pour la valeur de $k$}{16}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Rendement réalisé}{18}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Étape 1}{18}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Étape 2}{18}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Étape 3}{19}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Étape 4}{19}{subsection.6.4}%
+\contentsline {section}{\numberline {7}Mesure du rendement du obligation}{19}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Méthode pour trouver le TRI}{19}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Méthode pour trouver le rendement d'une obligation}{20}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Trouver $y$ avec une calculatrice financière}{20}{subsection.7.3}%
+\contentsline {section}{\numberline {8}Relation Prix - Taux de rendement}{21}{section.8}%
+\contentsline {section}{\numberline {9}Propriétés reliées à la volatilité}{21}{section.9}%
+\contentsline {section}{\numberline {10}Caractéristiques affectant la volatilité}{22}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Anticipation sur les taux d'intérêts}{23}{subsection.10.1}%
+\contentsline {section}{\numberline {11}Mesures de la volatilité}{23}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Prix d’un point de base}{23}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Valeur en rendement d’une variation de prix}{24}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Durée}{24}{subsection.11.3}%
+\contentsline {section}{\numberline {12}Mesures de durée}{25}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Durée de macaulay}{25}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Durée modifiée}{26}{subsection.12.2}%
+\contentsline {section}{\numberline {13}Propriétés de la durée}{26}{section.13}%
+\contentsline {section}{\numberline {14}Approximation de la variation de prix}{28}{section.14}%
+\contentsline {section}{\numberline {15}Introduction à la convexité}{29}{section.15}%
+\contentsline {section}{\numberline {16}Mesure de convexité}{29}{section.16}%
+\contentsline {section}{\numberline {17}Propriétés de la convexité}{29}{section.17}%
+\contentsline {section}{\numberline {18}Approximation (quadratique)}{30}{section.18}%
+\contentsline {section}{\numberline {19}Hypothèses importantes pour durée et convexité}{31}{section.19}%
+\contentsline {section}{\numberline {20}Durée et convexité effectives}{31}{section.20}%
+\contentsline {section}{\numberline {21}Relation risque-rendement}{31}{section.21}%
+\contentsline {section}{\numberline {22}Composantes du taux de rendement}{32}{section.22}%
+\contentsline {subsection}{\numberline {22.1} Mesures de la prime de risque}{33}{subsection.22.1}%
+\contentsline {section}{\numberline {23} Courbe des rendements à l’échéance}{34}{section.23}%
+\contentsline {section}{\numberline {24}Taux de rendement au comptant}{34}{section.24}%
+\contentsline {subsection}{\numberline {24.1}Structure à terme des taux d’intérêt}{34}{subsection.24.1}%
+\contentsline {subsection}{\numberline {24.2}Construction des $z_t$}{35}{subsection.24.2}%
+\contentsline {section}{\numberline {25}Courbe des rendements à l’échéance au pair}{35}{section.25}%
+\contentsline {section}{\numberline {26}Taux de rendement à terme}{36}{section.26}%
+\contentsline {subsection}{\numberline {26.1}Trouver $f_{t,n}$}{36}{subsection.26.1}%
+\contentsline {section}{\numberline {27}Exemples}{37}{section.27}%
+\contentsline {subsection}{\numberline {27.1}Exemple 1}{37}{subsection.27.1}%
+\contentsline {subsection}{\numberline {27.2}Exemple 2}{37}{subsection.27.2}%
+\contentsline {subsection}{\numberline {27.3}Exemple 3}{38}{subsection.27.3}%
+\contentsline {subsection}{\numberline {27.4}Exemple 4}{38}{subsection.27.4}%
+\contentsline {section}{\numberline {28} Formes de la structure à terme des taux}{38}{section.28}%
+\contentsline {subsection}{\numberline {28.1}Théorie des anticipations pures}{39}{subsection.28.1}%
+\contentsline {subsection}{\numberline {28.2}Théorie de la prime de liquidité}{40}{subsection.28.2}%
+\contentsline {subsection}{\numberline {28.3}Théorie de la segmentation du marché}{40}{subsection.28.3}%
+\contentsline {subsection}{\numberline {28.4}Théorie des habitats préférés}{41}{subsection.28.4}%
+\contentsline {section}{\numberline {29}Introduction}{41}{section.29}%
+\contentsline {section}{\numberline {30}Bon du trésor}{41}{section.30}%
+\contentsline {subsection}{\numberline {30.1}Bon du Trésor Canadien}{42}{subsection.30.1}%
+\contentsline {subsubsection}{\numberline {30.1.1}Caractéristiques}{42}{subsubsection.30.1.1}%
+\contentsline {subsubsection}{\numberline {30.1.2}Calcul taux de rendement}{42}{subsubsection.30.1.2}%
+\contentsline {subsection}{\numberline {30.2}Bon du Trésor Américain}{43}{subsection.30.2}%
+\contentsline {subsubsection}{\numberline {30.2.1}Caractéristiques}{43}{subsubsection.30.2.1}%
+\contentsline {section}{\numberline {31}Papier commercial}{44}{section.31}%
+\contentsline {subsection}{\numberline {31.1}Caractéristiques}{44}{subsection.31.1}%
+\contentsline {section}{\numberline {32}Acceptation bancaire}{44}{section.32}%
+\contentsline {subsection}{\numberline {32.1}Caractéristiques}{44}{subsection.32.1}%
+\contentsline {section}{\numberline {33}Convention de rachat}{45}{section.33}%
+\contentsline {subsection}{\numberline {33.1}Caractéristiques}{45}{subsection.33.1}%
+\contentsline {subsection}{\numberline {33.2}Instruments reliés}{45}{subsection.33.2}%
+\contentsline {section}{\numberline {34}Politique monétaire}{46}{section.34}%
+\contentsline {subsection}{\numberline {34.1}Cible de maîtrise de l’inflation}{46}{subsection.34.1}%
+\contentsline {subsection}{\numberline {34.2}Taux de change flottant du Canada}{46}{subsection.34.2}%
+\contentsline {section}{\numberline {35}Introduction}{46}{section.35}%
+\contentsline {section}{\numberline {36} Obligation standard}{47}{section.36}%
+\contentsline {subsection}{\numberline {36.1}Caractéristiques}{47}{subsection.36.1}%
+\contentsline {subsection}{\numberline {36.2}Prix présentés en 32e}{48}{subsection.36.2}%
+\contentsline {section}{\numberline {37}Obligation à rendement réel}{48}{section.37}%
+\contentsline {subsection}{\numberline {37.1}Prix obligation à rendement réel}{48}{subsection.37.1}%
+\contentsline {section}{\numberline {38}Obligations coupons détachés}{49}{section.38}%
+\contentsline {subsection}{\numberline {38.1}Caractéristiques}{49}{subsection.38.1}%
+\contentsline {section}{\numberline {39}Marché primaire}{49}{section.39}%
+\contentsline {subsection}{\numberline {39.1}Canada}{49}{subsection.39.1}%
+\contentsline {subsection}{\numberline {39.2}États-Unis}{50}{subsection.39.2}%
+\contentsline {section}{\numberline {40}Marché secondaire}{50}{section.40}%
+\contentsline {section}{\numberline {41}Cadre de gestion de portefeuille obligataire}{50}{section.41}%
+\contentsline {section}{\numberline {42}Gestion obligataire par rapport à un indice du marché obligataire}{51}{section.42}%
+\contentsline {subsection}{\numberline {42.1}Gestion passive}{51}{subsection.42.1}%
+\contentsline {subsection}{\numberline {42.2}Gestion active}{51}{subsection.42.2}%
+\contentsline {section}{\numberline {43}Classification des stratégies}{51}{section.43}%
+\contentsline {subsection}{\numberline {43.1}Indexation d'obligations pure (ou approche de réplication complète)}{51}{subsection.43.1}%
+\contentsline {subsection}{\numberline {43.2}Indexation améliorée en faisant correspondre les principaux facteurs de risque}{52}{subsection.43.2}%
+\contentsline {subsection}{\numberline {43.3}Indexation améliorée grâce à de petites incohérences de facteurs de risque}{52}{subsection.43.3}%
+\contentsline {subsection}{\numberline {43.4}Gestion active par des inadéquations plus importantes des facteurs de risque}{53}{subsection.43.4}%
+\contentsline {subsection}{\numberline {43.5}Gestion active à part entière}{53}{subsection.43.5}%
+\contentsline {section}{\numberline {44}Sélection d'un indice obligataire de référence: considérations générales}{53}{section.44}%
+\contentsline {subsection}{\numberline {44.1}Risque de valeur marchande}{53}{subsection.44.1}%
+\contentsline {subsection}{\numberline {44.2}Risque de revenu}{54}{subsection.44.2}%
+\contentsline {subsection}{\numberline {44.3}Le risque de crédit}{54}{subsection.44.3}%
+\contentsline {subsection}{\numberline {44.4}Le risque de responsabilité des passifs}{54}{subsection.44.4}%
+\contentsline {section}{\numberline {45}Suivi des risques}{54}{section.45}%
+\contentsline {section}{\numberline {46}Stratégies d'indexation améliorées}{55}{section.46}%
+\contentsline {subsection}{\numberline {46.1}Améliorations à moindre coût}{55}{subsection.46.1}%
+\contentsline {subsection}{\numberline {46.2}Améliorations de la sélection des problèmes}{55}{subsection.46.2}%
+\contentsline {subsection}{\numberline {46.3}Positionnement de la courbe des rendement}{56}{subsection.46.3}%
+\contentsline {subsection}{\numberline {46.4}Positionnement sectoriel et qualité}{56}{subsection.46.4}%
+\contentsline {subsection}{\numberline {46.5}Positionnement par rapport au risque d'appel}{56}{subsection.46.5}%
+\contentsline {section}{\numberline {47}Activités supplémentaires requises pour le gestionnaire actif}{57}{section.47}%
+\contentsline {subsection}{\numberline {47.1}Identifiez les discordances d'index à exploiter}{57}{subsection.47.1}%
+\contentsline {subsection}{\numberline {47.2}Extrapolez les attentes du marché à partir des données du marché}{57}{subsection.47.2}%
+\contentsline {subsection}{\numberline {47.3}Prévoyez indépendamment les intrants nécessaires et comparez-les aux attentes du marché}{58}{subsection.47.3}%
+\contentsline {subsection}{\numberline {47.4}Estimer les valeurs relatives des titres afin d'identifier les zones de sous-évaluation ou de surévaluation}{58}{subsection.47.4}%
+\contentsline {section}{\numberline {48}Analyse du rendement total et analyse des scénarios}{58}{section.48}%
+\contentsline {subsection}{\numberline {48.1}Le rendement total d’une obligation}{58}{subsection.48.1}%
+\contentsline {subsection}{\numberline {48.2}L’analyse du rendement total}{58}{subsection.48.2}%
+\contentsline {section}{\numberline {49}Gérer les fonds contre les passifs}{59}{section.49}%
+\contentsline {subsection}{\numberline {49.1}Stratégies de dévouement}{59}{subsection.49.1}%
+\contentsline {section}{\numberline {50}Stratégies d'immunisation}{59}{section.50}%
+\contentsline {subsection}{\numberline {50.1}Immunisation classique à période unique}{60}{subsection.50.1}%
+\contentsline {section}{\numberline {51}Rééquilibrer un portefeuille immunisé}{61}{section.51}%
+\contentsline {section}{\numberline {52}Détermination du rendement cible}{61}{section.52}%
+\contentsline {section}{\numberline {53}Extensions de la théorie classique de l'immunisation}{62}{section.53}%
+\contentsline {section}{\numberline {54}Durée et convexité des actifs et des passifs}{65}{section.54}%
+\contentsline {section}{\numberline {55}Types de risque}{65}{section.55}%
+\contentsline {section}{\numberline {56}Minimisation des risques pour les portefeuilles immunisés}{67}{section.56}%
+\contentsline {section}{\numberline {57}Stratégies d'appariement des flux de trésorerie}{68}{section.57}%
+\contentsline {section}{\numberline {58}Exemples}{70}{section.58}%
+\contentsline {subsection}{\numberline {58.1}Question 1}{70}{subsection.58.1}%
+\contentsline {subsection}{\numberline {58.2}Question 2}{71}{subsection.58.2}%
+\contentsline {subsection}{\numberline {58.3}Question 3}{73}{subsection.58.3}%
+\contentsline {subsection}{\numberline {58.4}Question 4}{75}{subsection.58.4}%
+\contentsline {subsubsection}{\numberline {58.4.1}Quelle est la valeur nominale des obligations à 10 ans à acheter pour exécuter la stratégie d’Alonso ?}{77}{subsubsection.58.4.1}%

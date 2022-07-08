@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{Création des prêts hypothécaires résidentiels}{3}{0}{1}
+\beamer@sectionintoc {2}{Ratios importants}{8}{0}{2}
+\beamer@sectionintoc {3}{Types de prêts hypothécaires résidentiels}{10}{0}{3}
+\beamer@sectionintoc {4}{Calcul du Paiement et solde hypothécaire}{14}{0}{4}
+\beamer@sectionintoc {5}{Risques des prêts hypothécaire}{17}{0}{5}

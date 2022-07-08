@@ -1,0 +1,382 @@
+\documentclass[letterpaper, 12pt]{article}
+
+% --- Package imports ---
+
+% Extended set of colors
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage{
+  amsmath, amsthm, amssymb, mathtools, dsfont, units,          % Math typesetting
+  graphicx, wrapfig, subfig, float,                            % Figures and graphics formatting
+  listings, color, inconsolata, pythonhighlight,               % Code formatting
+  fancyhdr, sectsty, hyperref, enumerate, enumitem, framed }   % Headers/footers, section fonts, links, lists
+
+% lipsum is just for generating placeholder text and can be removed
+\usepackage{hyperref, lipsum} 
+
+% --- Fonts ---
+
+\usepackage{newpxtext, newpxmath, inconsolata}
+
+% --- Page layout settings ---
+
+% Set page margins
+\usepackage[left=1.35in, right=1.35in, top=1.0in, bottom=.9in, headsep=.2in, footskip=0.35in]{geometry}
+
+% Anchor footnotes to the bottom of the page
+\usepackage[bottom]{footmisc}
+
+% Set line spacing
+\renewcommand{\baselinestretch}{1.2}
+
+% Set spacing between paragraphs
+\setlength{\parskip}{1.3mm}
+
+% Allow multi-line equations to break onto the next page
+\allowdisplaybreaks
+
+% --- Page formatting settings ---
+
+% Set image captions to be italicized
+\usepackage[font={it,footnotesize}]{caption}
+
+% Set link colors for labeled items (blue), citations (red), URLs (orange)
+\hypersetup{colorlinks=true, linkcolor=RoyalBlue, citecolor=RedOrange, urlcolor=ForestGreen}
+
+% Set font size for section titles (\large) and subtitles (\normalsize) 
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{{\fontsize{19}{19}\selectfont\textreferencemark}\;\; }{0em}{}
+\titleformat{\subsection}{\normalsize\bfseries\selectfont}{\thesubsection\;\;\;}{0em}{}
+
+% Enumerated/bulleted lists: make numbers/bullets flush left
+%\setlist[enumerate]{wide=2pt, leftmargin=16pt, labelwidth=0pt}
+\setlist[itemize]{wide=0pt, leftmargin=16pt, labelwidth=10pt, align=left}
+
+% --- Table of contents settings ---
+
+\usepackage[subfigure]{tocloft}
+
+% Reduce spacing between sections in table of contents
+\setlength{\cftbeforesecskip}{.9ex}
+
+% Remove indentation for sections
+\cftsetindents{section}{0em}{0em}
+
+% Set font size (\large) for table of contents title
+\renewcommand{\cfttoctitlefont}{\large\bfseries}
+
+% Remove numbers/bullets from section titles in table of contents
+\makeatletter
+\renewcommand{\cftsecpresnum}{\begin{lrbox}{\@tempboxa}}
+\renewcommand{\cftsecaftersnum}{\end{lrbox}}
+\makeatother
+
+% --- Set path for images ---
+
+\graphicspath{{Images/}{../Images/}}
+
+% --- Math/Statistics commands ---
+
+% Add a reference number to a single line of a multi-line equation
+% Usage: "\numberthis\label{labelNameHere}" in an align or gather environment
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+% Shortcut for bold text in math mode, e.g. $\b{X}$
+\let\b\mathbf
+
+% Shortcut for bold Greek letters, e.g. $\bg{\beta}$
+\let\bg\boldsymbol
+
+% Shortcut for calligraphic script, e.g. %\mc{M}$
+\let\mc\mathcal
+
+% \mathscr{(letter here)} is sometimes used to denote vector spaces
+\usepackage[mathscr]{euscript}
+
+% Convergence: right arrow with optional text on top
+% E.g. $\converge[p]$ for converges in probability
+\newcommand{\converge}[1][]{\xrightarrow{#1}}
+
+% Weak convergence: harpoon symbol with optional text on top
+% E.g. $\wconverge[n\to\infty]$
+\newcommand{\wconverge}[1][]{\stackrel{#1}{\rightharpoonup}}
+
+% Equality: equals sign with optional text on top
+% E.g. $X \equals[d] Y$ for equality in distribution
+\newcommand{\equals}[1][]{\stackrel{\smash{#1}}{=}}
+
+% Normal distribution: arguments are the mean and variance
+% E.g. $\normal{\mu}{\sigma}$
+\newcommand{\normal}[2]{\mathcal{N}\left(#1,#2\right)}
+
+% Uniform distribution: arguments are the left and right endpoints
+% E.g. $\unif{0}{1}$
+\newcommand{\unif}[2]{\text{Uniform}(#1,#2)}
+
+% Independent and identically distributed random variables
+% E.g. $ X_1,...,X_n \iid \normal{0}{1}$
+\newcommand{\iid}{\stackrel{\smash{\text{iid}}}{\sim}}
+
+% Sequences (this shortcut is mostly to reduce finger strain for small hands)
+% E.g. to write $\{A_n\}_{n\geq 1}$, do $\bk{A_n}{n\geq 1}$
+\newcommand{\bk}[2]{\{#1\}_{#2}}
+
+% Math mode symbols for common sets and spaces. Example usage: $\R$
+\newcommand{\R}{\mathbb{R}}	% Real numbers
+\newcommand{\C}{\mathbb{C}}	% Complex numbers
+\newcommand{\Q}{\mathbb{Q}}	% Rational numbers
+\newcommand{\Z}{\mathbb{Z}}	% Integers
+\newcommand{\N}{\mathbb{N}}	% Natural numbers
+\newcommand{\F}{\mathcal{F}}	% Calligraphic F for a sigma algebra
+\newcommand{\El}{\mathcal{L}}	% Calligraphic L, e.g. for L^p spaces
+
+% Math mode symbols for probability
+\newcommand{\pr}{\mathbb{P}}	% Probability measure
+\newcommand{\E}{\mathbb{E}}	% Expectation, e.g. $\E(X)$
+\newcommand{\var}{\text{Var}}	% Variance, e.g. $\var(X)$
+\newcommand{\cov}{\text{Cov}}	% Covariance, e.g. $\cov(X,Y)$
+\newcommand{\corr}{\text{Corr}}	% Correlation, e.g. $\corr(X,Y)$
+\newcommand{\B}{\mathcal{B}}	% Borel sigma-algebra
+
+% Other miscellaneous symbols
+\newcommand{\tth}{\text{th}}	% Non-italicized 'th', e.g. $n^\tth$
+\newcommand{\Oh}{\mathcal{O}}	% Big-O notation, e.g. $\O(n)$
+\newcommand{\1}{\mathds{1}}	% Indicator function, e.g. $\1_A$
+
+% Additional commands for math mode
+\DeclareMathOperator*{\argmax}{argmax}		% Argmax, e.g. $\argmax_{x\in[0,1]} f(x)$
+\DeclareMathOperator*{\argmin}{argmin}		% Argmin, e.g. $\argmin_{x\in[0,1]} f(x)$
+\DeclareMathOperator*{\spann}{Span}		% Span, e.g. $\spann\{X_1,...,X_n\}$
+\DeclareMathOperator*{\bias}{Bias}		% Bias, e.g. $\bias(\hat\theta)$
+\DeclareMathOperator*{\ran}{ran}			% Range of an operator, e.g. $\ran(T) 
+\DeclareMathOperator*{\dv}{d\!}			% Non-italicized 'with respect to', e.g. $\int f(x) \dv x$
+\DeclareMathOperator*{\diag}{diag}		% Diagonal of a matrix, e.g. $\diag(M)$
+\DeclareMathOperator*{\trace}{trace}		% Trace of a matrix, e.g. $\trace(M)$
+\DeclareMathOperator*{\supp}{supp}		% Support of a function, e.g., $\supp(f)$
+
+% Numbered theorem, lemma, etc. settings - e.g., a definition, lemma, and theorem appearing in that 
+% order in Lecture 2 will be numbered Definition 2.1, Lemma 2.2, Theorem 2.3. 
+% Example usage: \begin{theorem}[Name of theorem] Theorem statement \end{theorem}
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+
+% Un-numbered theorem, lemma, etc. settings
+% Example usage: \begin{lemma*}[Name of lemma] Lemma statement \end{lemma*}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem*{definition*}{Definition}
+\newtheorem*{example*}{Example}
+\newtheorem*{remark*}{Remark}
+\newtheorem*{claim}{Claim}
+
+% --- Left/right header text (to appear on every page) ---
+
+% Do not include a line under header or above footer
+\pagestyle{fancy}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\headrulewidth}{0pt}
+
+% Right header text: Lecture number and title
+\renewcommand{\sectionmark}[1]{\markright{#1} }
+\fancyhead[R]{\small\textit{\nouppercase{\rightmark}}}
+
+% Left header text: Short course title, hyperlinked to table of contents
+\fancyhead[L]{\hyperref[sec:contents]{\small Structure des taux d’intérêt}}
+
+% --- Document starts here ---
+
+\begin{document}
+
+% --- Main title and subtitle ---
+
+\title{04-Structure des taux d’intérêt \\[1em]
+\normalsize GSF-3100 \\ Marchés des Capitaux}
+
+% --- Author and date of last update ---
+
+\author{\normalsize Simon-Pierre Boucher}
+\date{\normalsize\vspace{-1ex} Last updated: \today}
+
+% --- Add title and table of contents ---
+
+\maketitle
+\tableofcontents\label{sec:contents}
+
+% --- Main content: import lectures as subfiles ---
+
+\newpage
+
+\section{ Courbe des rendements à l’échéance}
+La courbe des rendements à l'échéance est une représentation graphique nous permettant de voir le risque d'une obligation en terme d'échéance.  Cela nous permet de voir la relation qui existe entre les taux de rendement de plusieurs obligations ayant un risque de crédit similaire et leur échéance.  Historiquement,  la courbe des rendements à l’échéance est croissante plutôt que décroissante.  Lorsque l'économie se porte bien,  la présence d'une courbe des rendements à l’échéance croissante est encore plus probable.  Plus l’échéance est éloignée,  plus l’obligation est volatile et donc plus le taux de rendement exigé devrait être élevé.  La courbe des rendements à l'échéance est souvent utilisée pour déterminer le taux de rendement permettant d’évaluer la valeur théorique d’une obligation non incluse dans la courbe.  Toutefois,  il s'agit d'une méthode problématique étant donnée que des obligations ayant la même échéance peuvent avoir des taux de coupons différents.  Sachant qu'une obligation ayant un taux de coupon plus élevé est moins volatile.  Il s'agit donc d'une obligation avec un risque plus faible et par le fait même une obligaiton qui offre plus petit rendement.   On peut donc avoir deux obligations de même échéance,  avec des rendements qui diffèrent. Une  façon de rendre la courbe des rendements à l'échéance robuste,  est de construire une courbe basée sur des obligations ayant le même taux de coupon.
+\section{Taux de rendement au comptant}
+Le taux de rendement au comptant $z_t$ est le taux d’une obligation à escompte pure d’échéance $t$ périodes.  Le taux est appelé également spot rate.  Comme il n’existe pas d’obligations à escompte pure pour toutes les échéances,  les taux de rendement au comptant sont construits à l’aide d’une théorie simplificatrice.
+\subsection{Structure à terme des taux d’intérêt}
+La structure à terme des taux d'intérêts représente l'ensemble des taux de rendement au comptant pour différentes échéances ($z_t$).  En utilisant cette stucture,  il nous sera possible de construire la courbe théorique des rendements au comptant à l’échéance.  La représentation des $z_t$ dans la courbe devra utiliser un taux nominale annuel.
+\newpage
+\subsection{Construction des $z_t$}
+On sait déja qu'une obligation réguilière est composé de flux monétaires $(FM)$.  Si nous supposons que chaque flux monétare d'une obligations régulières sont prisent individuellement,  il est possible de dire qu'une obligation régulière est équivalent à plusieurs obligations zéro-coupon. En effet,  chaque flux monétaire représentera un obligation zéro-coupon et le flux monétaire en question sera le proxy de la veleur à échéance $M$.  Selon la théorie de l’absence d’arbitrage, la valeur de l’obligation à coupons devrait être égale à la somme de la valeur des obligations à escompte pure:
+\begin{align*}
+P=\sum_{t=1}^n \left[ \frac{C}{(1+z_t)^t} \right]+\frac{M}{(1+z_n)^{n}}
+\end{align*}
+Nous allons écrire la dernière formule sans l'opérateur de sommation.
+\begin{align*}
+P=\frac{C}{(1+z_1)^1}+\frac{C}{(1+z_2)^2}+\frac{C}{(1+z_3)^3}+...+\frac{C}{(1+z_n)^n}+\frac{M}{(1+z_n)^{n}}
+\end{align*}
+En supposant qu’il y a absence d’arbitrage,  il est possible de résoudre l’équation précédente afin de trouver les valeurs de $z_1, z_2, z_3,...,z_n$.  Pour trouver les taux au comptant pour toutes les échéances,  il faut procéder à l’aide d’une méthode récursive (bootstrapping method).  S’il manque des échéances, il faut utiliser une technique de lissage, telle que l’interpolation linéaire, pour déterminer les taux manquants.
+\section{Courbe des rendements à l’échéance au pair}
+Courbe des rendements à l’échéance utilisant des obligations de référence ayant été transformées pour être évaluées au pair.  Cette courbe est utilisée en pratique à la place de la courbe des rendements à l’échéance pour réduire l’effet du taux de coupon.  Pour chaque échéance $n$,  cette courbe utilise le taux de coupon correspondant au coupon $C$ déterminé à l’aide de l’équation suivante:
+\begin{align*}
+M=\sum_{t=1}^n \left[ \frac{C}{(1+z_t)^t} \right]+\frac{M}{(1+z_n)^{n}}
+\end{align*} 
+On peut donc voir que pour la courbe des rendements à l’échéance au pair on replace dans la formule le prix de l'obligation $P$ par la valeur à l'échéance $M$.
+
+\section{Taux de rendement à terme}
+$f_{t,n}$ représente le taux de rendement à terme pour une échéance de $n$ périodes à compter de la période $t$.  Le taux de rendement à terme est le taux de rendement (effectif par période) implicite entre les périodes $t$ et $t+n$ étant donné les taux de rendement au comptant pour les échéances t et t+n périodes,  $z_t$ et $z_{t+n}$.  Les taux de rendement à terme représentent les taux de rendement au comptant futurs extraits des taux de rendement au comptant actuels.
+\subsection{Trouver $f_{t,n}$}
+Le taux de rendement à terme $t_{f,n}$ est le taux qui rend un investisseur indifférent entre les deux situations suivantes:
+\begin{itemize}
+\item Investir de $0$ à $t+n$ à $z_{t+n}$
+\item Investir de $0$ à $t$ à $z_t$ et de $t$ à $t+n$ à $f_{t,n}$
+\end{itemize}
+Grâce à cette dernière hypothèse, on peut poser la formule suivante
+\begin{align*}
+(1+z_{t+n})^{t+n}=(1+z_t)^t \times (1+f_{t,n})^n
+\end{align*}
+L’investisseur se sert de son anticipation du taux au comptant d’échéance $n$ périodes au temps $t$,  $E(z_n)$,  par rapport au taux à terme $f_{t,n}$,  pour décider s’il doit investir jusqu’à $t$ au taux $z_t$ ou jusqu’à $t+n$ au taux $z_{t+n}$.  Il peut,  entre autre,  se garantir un taux $f_{t,n}$ en empruntant à $z_t$ pour investir à $z_{t+n}$.
+\newpage
+\section{Exemples}
+À partir de la définition du taux de rendement à terme,  il est possible de déduire plusieurs relations entre les taux de rendement au comptant et les taux de rendement à terme.
+
+\subsection{Exemple 1}
+Les deux investissements suivants sont équivalents
+\begin{itemize}
+\item Investir pendant 4 périodes à un taux au comptant $z_4$
+\item La combinaison suivante
+\begin{itemize}
+\item Investir pendant 1 période à un taux au comptant $z_1$
+\item Investir pendant 1 période dans 1 période au taux à terme $f_{1,1}$
+\item Investir pendant 1 période dans 2 périodes au taux à terme $f_{2,1}$
+\item Investir pendant 1 période dans 3 périodes au taux à terme $f_{3,1}$
+\end{itemize}
+\end{itemize}
+\begin{align*}
+(1+z_4)^4=(1+z_1) \times (1+f_{1,1}) \times (1+f_{2,1}) \times (1+f_{3,1})
+\end{align*}
+
+
+\subsection{Exemple 2}
+Les deux investissements suivants sont équivalents
+\begin{itemize}
+\item Investir pendant 4 périodes à un taux au comptant $z_4$
+\item La combinaison suivante
+\begin{itemize}
+\item Investir pendant 1 période à un taux au comptant $z_1$
+\item Investir pendant 2 périodes dans 1 période au taux à terme $f_{2,1}$
+\item Investir pendant 1 période dans 3 périodes au taux à terme $f_{3,1}$
+\end{itemize}
+
+\begin{align*}
+(1+z_4)^4=(1+z_1) \times (1+f_{1,2})^2 \times (1+f_{3,1})
+\end{align*}
+\end{itemize}
+
+\subsection{Exemple 3}
+Les deux investissements suivants sont équivalents
+\begin{itemize}
+\item Investir pendant 4 périodes à un taux au comptant $z_4$
+\item La combinaison suivante
+\begin{itemize}
+\item Investir pendant 1 période à un taux au comptant $z_1$
+\item Investir pendant 1 période dans 1 période au taux à terme $f_{1,1}$
+\item Investir pendant 2 périodes dans 2 périodes au taux à terme $f_{2,2}$
+\end{itemize}
+
+\begin{align*}
+(1+z_4)^4=(1+z_1) \times (1+f_{1,1}) \times (1+f_{2,2})^2
+\end{align*}
+\end{itemize}
+
+\subsection{Exemple 4}
+Les deux investissements suivants sont équivalents
+\begin{itemize}
+\item Investir pendant 4 périodes à un taux au comptant $z_4$
+\item La combinaison suivante
+\begin{itemize}
+\item Investir pendant 2 périodes à un taux au comptant $z_2$
+\item Investir pendant 1 période dans 2 périodes au taux à terme $f_{2,1}$
+\item Investir pendant 1 période dans 3 périodes au taux à terme $f_{3,1}$
+\end{itemize}
+\begin{align*}
+(1+z_4)^4=(1+z_2)^2 \times (1+f_{2,1}) \times (1+f_{3,1})
+\end{align*}
+\end{itemize}
+
+\section{ Formes de la structure à terme des taux}
+Plusieurs théories ont été mit de l'avant pour essayer d'expliquer la forme de la structure à terme des taux à travers le temps.  Avant de regarder ses théories plus en détail,  nous allons regarder les formes que peuvent prendre la structure à terme des taux.  Historiquement,  les trois formes suivantes ont été observées.
+\begin{enumerate}
+\item Croissante ou normale
+\item Décroissante ou inversée
+\item Horizontale ou plate
+\end{enumerate} 
+\subsection{Théorie des anticipations pures}
+La théorie des anticipations pures montre que les taux de rendement à terme sont des estimateurs non biaisés des taux au comptant leur étant associés dans le futur.  De façon simple, on peut imaginer un monde avec 2 périodes. La première période allant de $t=0$ à $t=1$ et la deuxième période allant de $t=1$ à $t=2$.  Si on pose l'hypothèse que la structure à terme est croissante,  alors le rendement que je vais avoir en achetant une obligation en $t=0$ et venant à échéance en $t=1$ sera plus faible que le rendement obtenu avec une obligation achetée en $t=0$ et venant à échéance en $t=2$.  Le taux d'une obligation achetée en $t=0$ et venant à échéance en $t=1$ est représenté par $z_{1}$,  alors que le taux d'une obligation achetée en $t=0$ et venant à échéance en $t=2$ est représenté par $z_{2}$.  De plus, nous allons représenter le taux future d'une obligation qui serait achetée en $t=1$ et qui viendrait à échéance en $t=2$ par $E_0(z_{1,1})$.  On peut dire que $E_0(z_{1,1})$ représente l'anticipation en $t=0$ du taux qui sera en vigueur dans une période et ce pour une période.  Afin d'éviter la présence d'arbitrage, il doit y avoir un taux de rendement à terme $f_{1,1}$ qui rend l'équation suivante vrai.
+\begin{align*}
+(1+z_2)^2=(1+z_1) \times (1+f_{1,1})
+\end{align*}
+On peut donc exprimer $f_{1,1}$ en fonction de $z_1$ et $z_2$ de la façon suivante.
+\begin{align*}
+f_{1,1}=\frac{(1+z_2)^2}{(1+z_1)}-1
+\end{align*}
+En appliquant la définition de la théorie des anticipations pures à notre monde composé de 2 périodes, on arrive à l'énoncé: \\
+ \textbf{La théorie des anticipations pures montre que le taux de rendement à terme $f_{1,1}$ est un estimateur non biaisés du taux au comptant $z_{1,1}$ lui étant associés dans le futur. }\\
+Ce dernier énoncé peut être représenté par l'équation suivante:
+\begin{align*}
+E_0(z_{1,1})=f_{1,1}=\frac{(1+z_2)^2}{(1+z_1)}-1
+\end{align*}
+\newpage
+De plus,  dans la théorie des anticipations pures, les agents sont neutres face au risque et la structure à terme des taux d’intérêt reflète simplement les anticipations du marché quant aux taux au comptant à venir.  Voici maintenant,  les propriétés de cette théorie.
+\begin{itemize}
+\item  Forme croissante $\rightarrow$ hausse future de $z_t$
+\item Forme décroissante $\rightarrow$ baisse future de $z_t$
+\item Forme horizontale $\rightarrow$ stabilité future de $z_t$
+\end{itemize}
+\subsection{Théorie de la prime de liquidité}
+La théorie de la prime de liquidité nous dit que le taux de rendement à terme est égal au taux de rendement au comptant anticipé pour la période correspondante auquel on ajoute une prime de liquidité qui augmente avec l’échéance.  Si nous reprenons l'example de la théorie précédente.
+\begin{align*}
+(1+z_2)^2>(1+z_1) \times (1+f_{1,1})
+\end{align*}
+Vous aurez remarqué qu'à la place d'une égalité, nous avons une inégalité.  Selon la théorie des anticipations pures  il y aura possibilité d'arbitrage en achetant un portefeuille payant un taux $z_2$ chaque années pendant deux ans et vendant un portefeuille payant un taux $z_1$ la première année et un taux $f_{1,1}$ la deuxième année.  La théorie de la prime de liquidité dirait qu'il ne s'agit pas nécessairement d'une opportunité d'arbitrage étant donnée que le portefeuille payant un taux $z_2$ représente un plus grand risque de liquidité.  Sachant que le risque doit être rénuméré,  il est normal qu'il offre un rendement supérieur.  De plus,  dans cette théorie,  les agents sont averses au risque et préfèrent les placements à court terme (plus liquides et moins volatils) aux placements à long terme.  La structure à terme des taux d’intérêt reflète les anticipations du marché quant aux taux au comptant à venir ainsi que la prime de liquidité.
+
+\subsection{Théorie de la segmentation du marché}
+Dans la théorie de la segmentation du marché la forme de la courbe est déterminée par l’offre et la demande des titres financiers pour chaque échéance.  Les agents ont des horizons bien définis et n’ont aucune préférence pour les taux d’échéances autres que leurs horizons.  La détermination des taux à court terme est indépendante de celle des taux à long terme puisque le marché à court terme est segmenté du marché à long terme.
+\subsection{Théorie des habitats préférés}
+La théorie des habitats préférés est une combinaison de la théorie de la prime de liquidité et de la théorie de la segmentation du marché.  En effet,  cette théorie suppose qu'il existe des primes de liquidité.  Toutefois,  puisque le marché est partiellement segmenté,  celles-ci ne sont pas nécessairement une fonction croissante de l’échéance.  Les agents sont prêts à sortir de leur habitat préféré si on leur offre une prime de liquidité suffisante.
+
+
+\begin{thebibliography}{1}
+
+\bibitem{williams}
+   Fabozzi, Frank J.
+   \textit{Bond markets, analysis and strategies (9e édition)}.
+ 
+
+% Uncomment the following lines to include a webpage
+% \bibitem{webpage1}
+%   LastName, FirstName. ``Webpage Title''.
+%   WebsiteName, OrganizationName.
+%   Online; accessed Month Date, Year.\\
+%   \texttt{www.URLhere.com}
+
+\end{thebibliography}
+
+% --- Document ends here ---
+
+\end{document}
