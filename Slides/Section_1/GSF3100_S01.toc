@@ -1,7 +1,0 @@
-\beamer@sectionintoc {1}{Matériel didactique}{3}{0}{1}
-\beamer@sectionintoc {2}{Évaluations sommatives}{4}{0}{2}
-\beamer@sectionintoc {3}{Objectif du cours}{7}{0}{3}
-\beamer@sectionintoc {4}{Actif financier}{9}{0}{4}
-\beamer@sectionintoc {5}{Intermédiation financière}{10}{0}{5}
-\beamer@sectionintoc {6}{Marché financier}{12}{0}{6}
-\beamer@sectionintoc {7}{Titre à revenu fixe}{14}{0}{7}
